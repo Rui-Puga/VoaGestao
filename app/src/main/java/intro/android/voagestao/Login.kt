@@ -2,7 +2,6 @@ package intro.android.voagestao
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,21 +22,7 @@ class Login : AppCompatActivity() {
                 insets
             }
             binding.buttonEntrar.setOnClickListener {
-                var usernameC = "admin"
-                var passwordC = "admin"
-                val username = binding.etUser.text.toString()
-                val password = binding.etPass.text.toString()
 
-
-                if(username == usernameC && password == passwordC){
-
-                    Toast.makeText(applicationContext, "login com sucesso", Toast.LENGTH_SHORT).show()
-
-                }else{
-                    binding.etUser.text.clear()
-                    binding.etPass.text.clear()
-                    Toast.makeText(applicationContext, "username ou password erradas", Toast.LENGTH_SHORT).show()
-                }
             }
         }
     }
