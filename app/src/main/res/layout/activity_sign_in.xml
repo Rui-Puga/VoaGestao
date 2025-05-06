@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/login"
+    android:id="@+id/signin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
-    android:background="#FFFFFF">
+    android:background="#FAFAFA">
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Nome de utilizador"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_height="59dp"
         android:layout_marginBottom="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress" />
@@ -19,21 +27,14 @@
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
-        android:layout_height="59dp"
+        android:layout_height="62dp"
         android:layout_marginBottom="24dp"
         android:hint="Palavra-passe"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonEntrar"
+        android:id="@+id/buttonSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Entrar" />
-
-    <Button
-        android:id="@+id/buttonCriarConta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Criar Conta"
-        android:layout_marginTop="16dp" />
+        android:text="Criar Conta" />
 </LinearLayout>
