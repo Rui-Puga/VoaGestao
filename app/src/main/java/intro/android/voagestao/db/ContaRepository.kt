@@ -11,20 +11,4 @@ class ContaRepository(private val contaDao: ContaDao) {
     suspend fun listarContas(): List<Conta> {
         return contaDao.listarContas()
     }
-
-    suspend fun autenticar(email: String, password: String): Conta? {
-        return contaDao.autenticar(email, password)
-    }
-
-    suspend fun buscarPorEmail(email: String): Conta? {
-        return contaDao.buscarPorEmail(email)
-    }
-
-    suspend fun atualizarConta(id: Long, username: String, password: String) {
-        contaDao.atualizarConta(id, username, password)
-    }
-
-    suspend fun eliminarConta(id: Long) {
-        contaDao.eliminarConta(id)
-    }
 }
