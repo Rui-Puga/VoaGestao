@@ -1,0 +1,16 @@
+[
+  {
+    "nome": "Hotel do Sol",
+    "preco": 150.0,
+    "tipoPreco": "por noite",
+    "local": "Lisboa",
+    "horario": "08:00–22:00"
+  },
+  {
+    "nome": "Pousada da Serra",
+    "preco": 90.0,
+    "tipoPreco": "por pessoa",
+    "local": "Covilhã",
+    "horario": "10:00–20:00"
+  }
+]
