@@ -13,6 +13,18 @@
         android:theme="@style/Theme.VoaGestao"
         tools:targetApi="31">
         <activity
+            android:name=".Planning"
+            android:exported="false" />
+        <activity
+            android:name=".ItemDetails"
+            android:exported="false" />
+        <activity
+            android:name=".ListItems"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
             android:name=".SignIn"
             android:exported="false" />
         <activity
