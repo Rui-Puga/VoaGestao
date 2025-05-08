@@ -23,6 +23,13 @@ class SignIn : AppCompatActivity() {
         val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "voagestao.db").build()
         val contaDao = db.contaDao()
 
+        binding.buttonVoltarLogin.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
         binding.buttonSignIn.setOnClickListener {
             val username = binding.editTextUsername.text.toString()
             val email = binding.editTextEmail.text.toString()

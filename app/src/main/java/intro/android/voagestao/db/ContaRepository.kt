@@ -11,4 +11,7 @@ class ContaRepository(private val contaDao: ContaDao) {
     suspend fun listarContas(): List<Conta> {
         return contaDao.listarContas()
     }
+    suspend fun buscarPorEmail(email: String): Conta? {
+        return contaDao.buscarPorEmail(email)
+    }
 }

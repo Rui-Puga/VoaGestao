@@ -2,42 +2,67 @@ package intro.android.voagestao
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import intro.android.voagestao.databinding.ActivityLoginBinding
-
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import intro.android.voagestao.db.AppDatabase
+import intro.android.voagestao.db.ContaRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Login : AppCompatActivity() {
-        val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
+    private lateinit var contaRepository: ContaRepository
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            enableEdgeToEdge()
-            setContentView(binding.root)
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.login)) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+
+        val database = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "voagestao.db"
+        ).build()
+
+        contaRepository = ContaRepository(database.contaDao())
+
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val btnGoToSignUp = findViewById<Button>(R.id.btnGoToSignUp) // ⬅️ Moveu para aqui
+
+        btnLogin.setOnClickListener {
+            val email = findViewById<EditText>(R.id.editEmail).text.toString()
+            val password = findViewById<EditText>(R.id.editPassword).text.toString()
+
+            if (email.isBlank() || password.isBlank()) {
+                Toast.makeText(this, "Preenche todos os campos!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
-            binding.buttonEntrar.setOnClickListener {
-                var usernameC = "admin"
-                var passwordC = "admin"
-                val username = binding.etUser.text.toString()
-                val password = binding.etPass.text.toString()
 
+            lifecycleScope.launch {
+                val conta = withContext(Dispatchers.IO) {
+                    contaRepository.buscarPorEmail(email)
+                }
 
-                if(username == usernameC && password == passwordC){
-
-                    Toast.makeText(applicationContext, "login com sucesso", Toast.LENGTH_SHORT).show()
-
-                }else{
-                    binding.etUser.text.clear()
-                    binding.etPass.text.clear()
-                    Toast.makeText(applicationContext, "username ou password erradas", Toast.LENGTH_SHORT).show()
+                if (conta == null || conta.Password != password) {
+                    runOnUiThread {
+                        Toast.makeText(this@Login, "Email ou palavra-passe inválidos!", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    val intent = Intent(this@Login, MainActivity::class.java)
+                    intent.putExtra("username", conta.Username)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
+
+        // ✅ Agora está fora do outro click listener
+        btnGoToSignUp.setOnClickListener {
+            val intent = Intent(this, SignIn::class.java)
+            startActivity(intent)
+        }
     }
+}

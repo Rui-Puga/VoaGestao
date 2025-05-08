@@ -11,4 +11,7 @@ interface ContaDao {
 
     @Query("SELECT * FROM contas")
     suspend fun listarContas(): List<Conta>
+
+    @Query("SELECT * FROM contas WHERE Email = :email LIMIT 1")
+    suspend fun buscarPorEmail(email: String): Conta?
 }

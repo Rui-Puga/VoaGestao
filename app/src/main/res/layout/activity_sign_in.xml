@@ -37,4 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Criar Conta" />
+
+    <!-- ✅ Botão para voltar ao Login -->
+    <Button
+        android:id="@+id/buttonVoltarLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar ao Login"
+        android:layout_marginTop="12dp" />
+
 </LinearLayout>

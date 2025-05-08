@@ -20,5 +20,13 @@
         android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Terminar sessão"/>
+        android:text="Terminar sessão"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botão para ir para o Perfil -->
+    <Button
+        android:id="@+id/buttonGoToProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir para Perfil"/>
 </LinearLayout>
