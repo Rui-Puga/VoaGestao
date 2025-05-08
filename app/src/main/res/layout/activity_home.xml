@@ -1,30 +1,253 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
-    android:background="#FAFAFA">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <LinearLayout
+    <!-- Background image as root -->
+    <!-- <ImageView
+        android:id="@+id/bgImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="24dp"
-        android:gravity="center"
-        android:background="#FAFAFA">
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_home"
+        android:layout_gravity="center"
+        android:contentDescription="@string/bg_image"
+        android:adjustViewBounds="true" /> -->
 
-        <TextView
-            android:id="@+id/textWelcome"
-            android:layout_width="wrap_content"
+    <!-- Foreground content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome"
-            android:textSize="20sp"
-            android:layout_marginBottom="32dp"/>
+            android:background="@android:color/transparent">
 
+            <!-- Top Bar -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:text="Nome"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:src=""
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end"
+                    android:contentDescription="" />
+            </LinearLayout>
+
+            <!-- Search Bar -->
+            <EditText
+                android:hint="Procurar destinos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:background=""
+                android:padding="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Tabs -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <Button
+                    android:text="Hotéis"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#F4CBA3" />
+
+                <Button
+                    android:text="Viagens"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#E6A9C1" />
+
+                <Button
+                    android:text="Transportes"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#F4CBA3" />
+            </LinearLayout>
+
+            <!-- Promoções -->
+            <TextView
+                android:text="Promoções"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!-- Example Card -->
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:padding="8dp"
+                        android:background="">
+
+                        <ImageView
+                            android:src=""
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:scaleType="centerCrop" />
+
+                        <TextView
+                            android:text="Nome do destino"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="local, local, local"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="Preço / Pessoa"
+                            android:textColor="#0099FF"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <!-- Repeat above card layout for more cards -->
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Recomendações -->
+            <TextView
+                android:text="Recomendações"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:background="">
+
+                <ImageView
+                    android:src=""
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:text="Nome extenso do destino"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="local, local, local"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="5/5"
+                        android:textColor="#FFA000"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="Preço / Pessoa"
+                        android:textColor="#0099FF"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <Button
+                    android:text="Reservar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#D2B48C" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        android:gravity="center">
+
+        <ImageButton
+            android:src=""
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="Início" />
+
+        <ImageButton
+            android:src=""
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="Planeamento" />
+
+        <ImageButton
+            android:src=""
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="Perfil" />
     </LinearLayout>
-
-
 
 </LinearLayout>

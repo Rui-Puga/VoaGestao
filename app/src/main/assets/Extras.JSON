@@ -1,15 +1,17 @@
 [
   {
+    "id": 1,
     "nome": "Guia Turístico",
     "preco": 30.0,
-    "tipoPreco": "por pessoa",
+    "tipoPreco": "€",
     "local": "Porto",
     "horario": "09:00–18:00"
   },
   {
+    "id": 2,
     "nome": "Passe de Museus",
     "preco": 15.0,
-    "tipoPreco": "flat",
+    "tipoPreco": "por pessoa",
     "local": "Lisboa",
     "horario": "10:00–17:00"
   }
