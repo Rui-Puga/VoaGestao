@@ -30,7 +30,7 @@ class Login : AppCompatActivity() {
         contaRepository = ContaRepository(database.contaDao())
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val btnGoToSignUp = findViewById<Button>(R.id.btnGoToSignUp) // ⬅️ Moveu para aqui
+        val btnGoToSignUp = findViewById<Button>(R.id.btnGoToSignUp)
 
         btnLogin.setOnClickListener {
             val email = findViewById<EditText>(R.id.editEmail).text.toString()
@@ -51,15 +51,20 @@ class Login : AppCompatActivity() {
                         Toast.makeText(this@Login, "Email ou palavra-passe inválidos!", Toast.LENGTH_SHORT).show()
                     }
                 } else {
+                    // Salvar o email do utilizador no SharedPreferences após o login
+                    val sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("email", conta.Email)
+                    editor.apply()
+
                     val intent = Intent(this@Login, MainActivity::class.java)
-                    intent.putExtra("username", conta.Username)
+                    intent.putExtra("username", conta.Username) // Ainda passa o username para a MainActivity
                     startActivity(intent)
                     finish()
                 }
             }
         }
 
-        // ✅ Agora está fora do outro click listener
         btnGoToSignUp.setOnClickListener {
             val intent = Intent(this, SignIn::class.java)
             startActivity(intent)

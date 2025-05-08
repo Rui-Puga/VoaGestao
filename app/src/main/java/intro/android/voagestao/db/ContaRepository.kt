@@ -14,4 +14,7 @@ class ContaRepository(private val contaDao: ContaDao) {
     suspend fun buscarPorEmail(email: String): Conta? {
         return contaDao.buscarPorEmail(email)
     }
+    suspend fun removerPorEmail(email: String) {
+        contaDao.removerPorEmail(email)
+    }
 }
